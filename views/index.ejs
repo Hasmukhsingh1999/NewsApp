@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BBC News</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="home">
+            <div class="navbar">
+                <h1>News App</h1>
+                <div class="links">
+                    <a href="#">Home</a>
+                    <a href="#">News</a>
+                    <a href="#">Sport</a>
+                    <a href="#">Weather</a>
+                </div>
+                <div class="nav-right">
+                    <form id="country-form" action="/" method="GET">
+                        <select id="country" name="country" onchange="this.form.submit()">
+                            <option value="us" <% if (selectedCountry==='us' ) { %>selected<% } %>>United States</option>
+                            <option value="gb" <% if (selectedCountry==='gb' ) { %>selected<% } %>>United Kingdom</option>
+                            <option value="ca" <% if (selectedCountry==='ca' ) { %>selected<% } %>>Canada</option>
+                            <option value="au" <% if (selectedCountry==='au' ) { %>selected<% } %>>Australia</option>
+                            <option value="fr" <% if (selectedCountry==='fr' ) { %>selected<% } %>>France</option>
+                            <option value="in" <% if (selectedCountry==='in' ) { %>selected<% } %>>India</option>
+                        </select>
+                        <input type="submit" value="Get News">
+                    </form>
+                </div>
+            </div>
+            <div class="header">
+                <h1>Welcome to News App</h1>
+                <div class="section">
+                    <% articles.forEach((article, index) => { %>
+                        <% if (article.urlToImage) { %>
+                            <div class="card">
+                                <img src="<%= article.urlToImage %>" alt="Article Image" class="card-image">
+                                <div class="card-content">
+                                    <h2 class="card-title"><%= article.title %></h2>
+                                    <p class="card-date"><%= article.publishedAt %></p>
+                                    <p class="card-description"><%= article.description %></p>
+                                </div>
+                            </div>
+                        <% } %>
+                    <% }) %>
+                </div>
+            </div>
+            <footer class="normal-footer">
+                <div class="container">
+                    <div class="footer-content">
+                        <p>&copy; 2023 Your Website Name. All rights reserved.</p>
+                        <ul class="footer-links">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+            
+        </div>
+    </div>
+</body>
+
+</html>

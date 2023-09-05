@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div class="nav">
+
+        </div>
+        <form id="country-form" action="/" method="GET">
+            <label for="country">Select a Country:</label>
+            <select id="country" name="country" onchange="this.form.submit()">
+                <option value="us" <% if (selectedCountry==='us' ) { %>selected<% } %>>United States</option>
+                <option value="gb" <% if (selectedCountry==='gb' ) { %>selected<% } %>>United Kingdom</option>
+                <!-- Add more country options here -->
+    
+            </select>
+            <input type="submit" value="Get News">
+        </form>
+    
+        <div class="news-container">
+            <% articles.forEach((article, index)=> { %>
+                <div class="news-card">
+                    <h2>
+                        <%= article.title %>
+                    </h2>
+                    <% if (article.urlToImage) { %>
+                        <img src="<%= article.urlToImage %>" alt="Article Image">
+                        <% } %>
+                            <p>
+                                <%= article.description %>
+                            </p>
+                            <a href="<%= article.url %>" target="_blank">Read more</a>
+                </div>
+                <% if ((index + 1) % 2===0) { %>
+                    <div style="width: 100%; clear: both;"></div>
+                    <% } %>
+                        <% }); %>
+        </div>
+    </div>
+</body>
+</html>
